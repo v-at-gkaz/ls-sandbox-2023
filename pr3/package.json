@@ -1,0 +1,13 @@
+{
+  "name": "pr2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "node app.mjs",
+    "dev": "nodemon app.mjs"
+  },
+  "author": "",
+  "license": "ISC"
+}
