@@ -1,0 +1,16 @@
+{
+  "name": "pr2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "MYAPP_USER=ivan MYAPP_PASSWORD=QWE123 node app.mjs",
+    "dev": "nodemon app.mjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
