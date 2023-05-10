@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "a600bac2-1136-47f8-971e-15d78e10c9ea",
+		"name": "pr6",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "pr6_test1",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "test",
+						"value": "ok",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000?a=1&b=2&c=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"query": [
+						{
+							"key": "a",
+							"value": "1"
+						},
+						{
+							"key": "b",
+							"value": "2"
+						},
+						{
+							"key": "c",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
