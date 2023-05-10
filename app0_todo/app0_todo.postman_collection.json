@@ -33,6 +33,62 @@
 			"response": []
 		},
 		{
+			"name": "FIXME get one",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "test",
+						"value": "ok",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todo/1683739562353",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todo",
+						"1683739562353"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FIXME delete one",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "test",
+						"value": "ok",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todo/1683739562353",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todo",
+						"1683739562353"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "create new todo",
 			"request": {
 				"method": "POST",
@@ -63,6 +119,43 @@
 						"api",
 						"v1",
 						"todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FIXME update one",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "test",
+						"value": "ok",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"new todo 1\",\n    \"body\": \"Content todo 1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todo/1683739562353",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todo",
+						"1683739562353"
 					]
 				}
 			},
