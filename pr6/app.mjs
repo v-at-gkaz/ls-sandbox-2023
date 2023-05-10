@@ -1,4 +1,5 @@
 import * as http from 'node:http';
+import * as fs from 'node:fs';
 
 const server = http.createServer((req, res) => {
 
@@ -7,7 +8,30 @@ const server = http.createServer((req, res) => {
     // console.log('url', req.url);
     // const params = req.url.replace('/?', '').split('&');
 
-    response(req, JSON.stringify({status: 'ok'}));
+    const bodyChunks = [];
+
+    req.on('data', (chunk) => {
+        // console.log('data detected', chunk);
+        bodyChunks.push(chunk);
+    });
+
+    req.on('end', () => {
+        const body = Buffer.concat(bodyChunks);
+
+        const contentType = req.headers['content-type'];
+
+        console.log('contentType', contentType);
+
+        if(contentType === 'application/json') {
+            console.log('body?', JSON.parse(body.toString()));
+        }
+
+        // fs.writeFileSync('./file.zip', body);
+        
+    });
+
+
+    response(res, JSON.stringify({status: 'ok'}));
 
 });
 
