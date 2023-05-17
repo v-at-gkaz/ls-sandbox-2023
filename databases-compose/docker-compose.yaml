@@ -8,6 +8,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: app_db
     ports:
       - "27017:27017"
 
@@ -25,7 +26,7 @@ services:
       ME_CONFIG_MONGODB_AUTH_DATABASE: 'app_db'
       ME_CONFIG_MONGODB_AUTH_USERNAME: 'app_user'
       ME_CONFIG_MONGODB_AUTH_PASSWORD: 'app_pass'
-      ME_CONFIG_MONGODB_ENABLE_ADMIN: 'false'
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: 'true'
     depends_on:
       - mongo
 
