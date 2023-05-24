@@ -1,0 +1,165 @@
+{
+	"info": {
+		"_postman_id": "a600bac2-1136-47f8-971e-15d78e10c9ea",
+		"name": "pr8_express",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all todos",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "test",
+						"value": "ok",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get todo by id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "test",
+						"value": "ok",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todo/1683739562353",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todo",
+						"1683739562353"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create new todo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "test",
+						"value": "ok",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"new todo 1\",\n    \"body\": \"Content todo 1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update todo by id",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "test",
+						"value": "ok",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"new todo 1\",\n    \"body\": \"Content todo 1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todo/1683739562353",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todo",
+						"1683739562353"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete todo by id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "test",
+						"value": "ok",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/todo/1683739562353",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"todo",
+						"1683739562353"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
