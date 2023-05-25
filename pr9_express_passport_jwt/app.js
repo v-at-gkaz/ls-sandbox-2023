@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const passport = require('passport');
+require('./config/passport');
 
 const authRouter = require('./routes/auth');
 const todoRouter = require('./routes/todo');

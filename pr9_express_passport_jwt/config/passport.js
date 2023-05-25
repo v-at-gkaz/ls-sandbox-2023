@@ -15,11 +15,12 @@ const fakeUsers = [
     }
 ];
 
-passport.use(new LocalStrategy((username, password, done)=>{
+// usernameField fix
+passport.use(new LocalStrategy({usernameField: "login"} ,(username, password, done)=>{
     try {
-        const foundUser = fakeUsers.filter(candidate=>{
+        const foundUser = fakeUsers.find(candidate=>{
             return candidate.name === username && candidate.password === String(password);
-        })[0];
+        });
 
         if(!foundUser){
             return done(null, false, {
