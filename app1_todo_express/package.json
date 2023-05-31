@@ -1,0 +1,22 @@
+{
+  "name": "pr8-express",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "JWT_SECRET='SuperSuperSecret' node ./bin/www",
+    "dev": "DEBUG=pr8-express:* JWT_SECRET='SuperSecret' nodemon ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-jwt": "^8.4.1",
+    "jsonwebtoken": "^9.0.0",
+    "morgan": "~1.9.1",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
