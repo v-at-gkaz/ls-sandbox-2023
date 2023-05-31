@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <label for="login">Login:</label>
+    <input type="text" id="login" value="ivan">
+
+    <br />
+    <label for="pass">Password:</label>
+    <input type="password" id="pass" value="1234567">
+
+    <button id="btn-login">Login</button>
+    
+    <hr />
+
+    <label for="textarea-result">Result</label>
+    <textarea rows="8" cols="80" id="textarea-result"></textarea>
+
+    <br />
+
+    <button id="btn-load-jwt">Load JWT from LocalStorage</button>
+
+    <button id="btn-save-jwt">Save JWT to LocalStorage</button>
+
+    <button id="btn-remove-jwt">Remove JWT from LocalStorage (Logout)</button>
+
+    <hr />
+
+    <button id="btn-req1">Request 1</button>
+
+    <label for="req1-result">Response 1</label>
+    <textarea rows="8" cols="80" id="req1-result"></textarea>
+
+    <script src="./script.js"></script>
+</body>
+</html>
