@@ -3,7 +3,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 const userSchema = mongoose.model('user');
 const bcrypt = require('bcrypt');
-const saltRounds = 10; // FIXME: move to environment
+const saltRounds = Number(process.env.BCRYPT_SALT_ROUNDS || 10);
 
 passport.use(new LocalStrategy({usernameField: "login"} , async (username, password, done)=>{
     try {

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "JWT_SECRET='SuperSuperSecret' MONGODB_CONNECTION_STRING='mongodb://root:example@localhost:27017/admin' node ./bin/www",
+    "start": "JWT_SECRET='SuperSuperSecret' BCRYPT_SALT_ROUNDS=20 JWT_TTL_PERIOD=300 MONGODB_CONNECTION_STRING='mongodb://root:example@localhost:27017/admin' node ./bin/www",
     "dev": "DEBUG=pr8-express:* JWT_SECRET='SuperSecret' MONGODB_CONNECTION_STRING='mongodb://root:example@localhost:27017/admin' nodemon ./bin/www"
   },
   "dependencies": {

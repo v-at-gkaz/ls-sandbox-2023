@@ -6,12 +6,21 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const secret = process.env.JWT_SECRET;
-const saltRounds = 10; // FIXME: move to environment
+const saltRounds = Number(process.env.BCRYPT_SALT_ROUNDS || 10);
+
+const getJWTExp = () => {
+  const d = new Date();
+  return Math.ceil(d.getTime()/1000) + process.env.JWT_TTL_PERIOD || 60;
+}
 
 const generateJWT = (user) => {
+
+  const exp = getJWTExp();
+
     return jsonwebtoken.sign({
         id: user.id,
-        name: user.name
+        name: user.username,
+        exp
     }, secret);
 }
 
