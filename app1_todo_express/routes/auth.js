@@ -2,8 +2,11 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 const jsonwebtoken = require('jsonwebtoken');
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const secret = process.env.JWT_SECRET;
+const saltRounds = 10; // FIXME: move to environment
 
 const generateJWT = (user) => {
     return jsonwebtoken.sign({
@@ -34,11 +37,43 @@ router.post('/login', (req, res, next) => {
           return;
         }
 
-        res.status(200);
+        res.status(406);
         res.send(info);
 
     })(req, res);
 
+});
+
+router.post('/signup', async (req, res, next) => {
+  const userSchema = mongoose.model('user');
+    try {
+
+        const login = req.body.login;
+
+        // check example
+        if(login === 'vasya') {
+          throw new Error("login is dinied");
+        }
+
+        const email = req.body.email;
+        const password = bcrypt.hashSync(req.body.password, saltRounds);
+
+        const newUser = await userSchema.create({
+            username: login,
+            email,
+            password
+        });
+
+        delete newUser.password;
+
+        res.status(201);
+        res.send({status: "success", createdUser: newUser });
+
+
+    } catch (err){
+        res.status(500);
+        res.send({status: "error", error: err.toString() });
+    }
 });
 
 module.exports = router;

@@ -1,32 +1,27 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const mongoose = require('mongoose');
+const userSchema = mongoose.model('user');
+const bcrypt = require('bcrypt');
+const saltRounds = 10; // FIXME: move to environment
 
-// FIXME
-const fakeUsers = [
-    {
-        id: 1,
-        name: "ivan",
-        password: "123456"
-    },
-    {
-        id: 2,
-        name: "maria",
-        password: "123321"
-    }
-];
-
-// usernameField fix
-passport.use(new LocalStrategy({usernameField: "login"} ,(username, password, done)=>{
+passport.use(new LocalStrategy({usernameField: "login"} , async (username, password, done)=>{
     try {
-        const foundUser = fakeUsers.find(candidate=>{
-            return candidate.name === username && candidate.password === String(password);
-        });
+
+        const foundUser = await userSchema.findOne({username});
 
         if(!foundUser){
+             return done(null, false, {
+                 message: "Incorrect login"
+             });
+        }
+
+        if(!bcrypt.compareSync(password, foundUser.password, saltRounds)){
             return done(null, false, {
-                message: "Incorrect username"
+                message: "Incorrect password"
             });
         }
+        
 
         delete foundUser.password;
 

@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "a600bac2-1136-47f8-971e-15d78e10c9ea",
-		"name": "pr9_express",
+		"_postman_id": "b9ba7ee2-8fee-4fce-9aa7-65c6a9c961d0",
+		"name": "app1_todo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -47,6 +47,46 @@
 						"v1",
 						"auth",
 						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "test",
+						"value": "ok",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"login\": \"maria\",\n    \"email\": \"maria@mail.ru\",\n    \"password\": \"123321\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signup"
 					]
 				}
 			},
