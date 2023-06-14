@@ -6,53 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "login (get jwt)",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "login (get jwt)",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "test",
-						"value": "ok",
-						"type": "default"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"login\": \"maria\",\n    \"password\": \"123321\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/v1/auth/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"v1",
-						"auth",
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "signup",
 			"request": {
 				"auth": {
@@ -68,7 +21,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"login\": \"maria\",\n    \"email\": \"maria@mail.ru\",\n    \"password\": \"123321\"\n}",
+					"raw": "{\n    \"login\": \"{{login}}\",\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -76,12 +29,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/auth/signup",
-					"protocol": "http",
+					"raw": "{{server_addr}}/api/v1/auth/signup",
 					"host": [
-						"localhost"
+						"{{server_addr}}"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -93,8 +44,56 @@
 			"response": []
 		},
 		{
+			"name": "login (get jwt)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "test",
+						"value": "ok",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"login\": \"{{login}}\",\n    \"password\": \"{{password}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server_addr}}/api/v1/auth/login",
+					"host": [
+						"{{server_addr}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "get all todos",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [
 					{
@@ -104,12 +103,10 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:3000/api/v1/todo",
-					"protocol": "http",
+					"raw": "{{server_addr}}/api/v1/todo",
 					"host": [
-						"localhost"
+						"{{server_addr}}"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -122,6 +119,16 @@
 		{
 			"name": "get todo by id",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [
 					{
@@ -131,12 +138,10 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:3000/api/v1/todo/1683739562353",
-					"protocol": "http",
+					"raw": "{{server_addr}}/api/v1/todo/1683739562353",
 					"host": [
-						"localhost"
+						"{{server_addr}}"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -150,6 +155,16 @@
 		{
 			"name": "create new todo",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [
 					{
@@ -168,12 +183,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/todo",
-					"protocol": "http",
+					"raw": "{{server_addr}}/api/v1/todo",
 					"host": [
-						"localhost"
+						"{{server_addr}}"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -186,6 +199,16 @@
 		{
 			"name": "update todo by id",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PATCH",
 				"header": [
 					{
@@ -204,12 +227,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/todo/1683739562353",
-					"protocol": "http",
+					"raw": "{{server_addr}}/api/v1/todo/1683739562353",
 					"host": [
-						"localhost"
+						"{{server_addr}}"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -223,6 +244,16 @@
 		{
 			"name": "delete todo by id",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [
 					{
@@ -232,12 +263,10 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:3000/api/v1/todo/1683739562353",
-					"protocol": "http",
+					"raw": "{{server_addr}}/api/v1/todo/1683739562353",
 					"host": [
-						"localhost"
+						"{{server_addr}}"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
