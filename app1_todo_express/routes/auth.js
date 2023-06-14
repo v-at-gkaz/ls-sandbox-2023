@@ -10,7 +10,7 @@ const saltRounds = Number(process.env.BCRYPT_SALT_ROUNDS || 10);
 
 const getJWTExp = () => {
   const d = new Date();
-  return Math.ceil(d.getTime()/1000) + process.env.JWT_TTL_PERIOD || 60;
+  return Math.ceil(d.getTime()/1000) + Number(process.env.JWT_TTL_PERIOD || 60);
 }
 
 const generateJWT = (user) => {
