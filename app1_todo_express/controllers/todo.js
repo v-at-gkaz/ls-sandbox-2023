@@ -1,32 +1,25 @@
 const mongoose = require('mongoose');
 const todoSchema = mongoose.model('todo');
+const utils = require('../common/utils');
 
 module.exports.getAll = async (req, res, next) => {
-    // res.send('GET todo listing');
-    res.status(200);
-    res.send(await todoSchema.find());
+    utils.sendHttpResponse(res, 200, await todoSchema.find());
 };
 
 module.exports.create = async (req, res, next) => {
-    // res.send('POST -- Create new todo');
     try {
-      const newTodo = await todoSchema.create(req.body);
-      res.status(201);
-      res.send(newTodo);
+      utils.sendHttpResponse(res, 201, await todoSchema.create(req.body));
     } catch(err) {
-      res.status(500);
-      res.send({status: "error", error: err.toString() });
+      utils.sendHttpResponse(res, 500, {status: "error", error: err.toString() });
     }
 };
 
 module.exports.getById = async (req, res, next) => {
     const todoId = req.params.id;
     try {
-        res.status(200);
-        res.send(await todoSchema.findById(todoId));
+        utils.sendHttpResponse(res, 200, await todoSchema.findById(todoId));
       } catch(err) {
-        res.status(500);
-        res.send({status: "error", error: err.toString() });
+        utils.sendHttpResponse(res, 500, {status: "error", error: err.toString() });
       }
 };
 
@@ -35,11 +28,9 @@ module.exports.update = async (req, res, next) => {
     const body = req.body;
     try {
         await todoSchema.findByIdAndUpdate(todoId, body);
-        res.status(201);
-        res.send(await todoSchema.findById(todoId));
+        utils.sendHttpResponse(res, 201, await todoSchema.findById(todoId));
     } catch(err) {
-        res.status(500);
-        res.send({status: "error", error: err.toString() });
+        utils.sendHttpResponse(res, 500, {status: "error", error: err.toString() });
     }
 };
 
@@ -47,10 +38,8 @@ module.exports.delete = async (req, res, next) => {
     const todoId = req.params.id;
     try {
         await todoSchema.findByIdAndDelete(todoId);
-        res.status(204);
-        res.send(null);
+        utils.sendHttpResponse(res, 204, null);
       } catch(err) {
-        res.status(500);
-        res.send({status: "error", error: err.toString() });
+        utils.sendHttpResponse(res, 500, {status: "error", error: err.toString() });
       }
 };
