@@ -21,6 +21,7 @@ function loadPageByName(name) {
             window[`page${funcName}Init`]();
         })
         .catch(error => {
+            console.log('err?', error);
             app.innerHTML = '<b>SPA Error 2</b>';
         });
 }
