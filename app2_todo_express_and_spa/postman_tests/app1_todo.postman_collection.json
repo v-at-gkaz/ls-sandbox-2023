@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "b9ba7ee2-8fee-4fce-9aa7-65c6a9c961d0",
+		"name": "app1_todo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "test",
+						"value": "ok",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"login\": \"{{login}}\",\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server_addr}}/api/v1/auth/signup",
+					"host": [
+						"{{server_addr}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login (get jwt)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "test",
+						"value": "ok",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"login\": \"{{login}}\",\n    \"password\": \"{{password}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server_addr}}/api/v1/auth/login",
+					"host": [
+						"{{server_addr}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create new todo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "test",
+						"value": "ok",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"name todo 1\",\n    \"descr\": \"descr todo 1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server_addr}}/api/v1/todo",
+					"host": [
+						"{{server_addr}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all todos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "test",
+						"value": "ok",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{server_addr}}/api/v1/todo",
+					"host": [
+						"{{server_addr}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get todo by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "test",
+						"value": "ok",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{server_addr}}/api/v1/todo/{{todoId}}",
+					"host": [
+						"{{server_addr}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"todo",
+						"{{todoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update todo by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "test",
+						"value": "ok",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"1111\",\n    \"descr\": \"2222\",\n    \"status\": \"3333\",\n    \"closedAt\":\"2023-06-14T15:36:38.414Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server_addr}}/api/v1/todo/{{todoId}}",
+					"host": [
+						"{{server_addr}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"todo",
+						"{{todoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete todo by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "test",
+						"value": "ok",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{server_addr}}/api/v1/todo/{{todoId}}",
+					"host": [
+						"{{server_addr}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"todo",
+						"{{todoId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
