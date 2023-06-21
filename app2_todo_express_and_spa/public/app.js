@@ -17,6 +17,8 @@ function loadPageByName(name) {
         })
         .then(result => {
             app.innerHTML = result;
+            const funcName = [ name[1].toUpperCase(), name.substr(2, name.length) ].join('');
+            window[`page${funcName}Init`]();
         })
         .catch(error => {
             app.innerHTML = '<b>SPA Error 2</b>';

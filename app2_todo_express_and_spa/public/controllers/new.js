@@ -1,1 +1,3 @@
-console.log('new controller detected');
+function pageNewInit(){
+    console.log('new controller detected');
+}

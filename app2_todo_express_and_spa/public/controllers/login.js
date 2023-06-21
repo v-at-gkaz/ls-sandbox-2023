@@ -1,1 +1,3 @@
-console.log('login controller detected');
+function pageLoginInit(){
+    console.log('login controller detected');
+}

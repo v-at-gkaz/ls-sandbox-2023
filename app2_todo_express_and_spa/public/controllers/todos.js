@@ -1,1 +1,3 @@
-console.log('todos controller detected');
+function pageTodosInit() {
+    console.log('todos controller detected');
+}
