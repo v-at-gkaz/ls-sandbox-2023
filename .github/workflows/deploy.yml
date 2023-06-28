@@ -1,0 +1,19 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run:
+    runs-on: self-hosted
+
+    steps:
+    - name: Install Node.js
+      run: |
+        mkdir fake_node_platform_directory
+
+    - name: Run
+      run: |
+        touch fake_run_result_file
